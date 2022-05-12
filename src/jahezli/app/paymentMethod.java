@@ -14,7 +14,7 @@ public class paymentMethod {
     String paymentDate;//date or String
    
     public paymentMethod(){
-    
+   
 }
    
     public double getCost() {

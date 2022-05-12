@@ -15,6 +15,15 @@ public class Manager extends User{
     public Manager(){
     super();
 }
+
+    public String getPlaceName() {
+        return placeName;
+    }
+
+    public void setPlaceName(String placeName) {
+        this.placeName = placeName;
+    }
+    
     public String confirmReservation(int reservationNo){
         return null;
     }

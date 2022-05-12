@@ -12,14 +12,37 @@ package jahezli.app;
 public class Customer extends User {
     String phone;
     String city;
-    
+    Reservation reserve;
     public Customer(){
         super();
     }
-    
-    //check method parameter and return
-     public void reserve(){
-       
+
+    public String getPhone() {
+        return phone;
     }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public Reservation getReserve() {
+        return reserve;
+    }
+
+    public void setReserve(Reservation reserve) {
+        this.reserve = reserve;
+    }
+     //check method parameter and return
+     public void reserve(){
+         
+     }
     
 }
