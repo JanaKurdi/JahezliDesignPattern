@@ -5,8 +5,8 @@
  */
 package jahezli.app;
 
-
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -20,14 +20,14 @@ public class JahezliApp {
     /**
      * @param args the command line arguments
      */
-    
     // arraylist to store customers after registration 
     ///static ArrayList<Customer> arrayOfCustomers = new ArrayList<>();
-    public static void main(String[] args) throws ParseException, FileNotFoundException {
+    public static void main(String[] args) throws ParseException, FileNotFoundException, IOException {
         // TODO code application logic here
         Scanner input = new Scanner(System.in);
         int choice;
         int reservationNo;
+        String TableNo;
         int choice2;
         Reservation reservation = null;
         do {
@@ -36,9 +36,10 @@ public class JahezliApp {
             System.out.println("---------------------------------------------------");
             System.out.println("Enter 1 to login");
             System.out.println("Enter 2 to search for Place ");
-            System.out.println("Enter 3 to modify the reservation ");
-            System.out.println("Enter 4 to display the reservation ");
-            System.out.println("Enter 5 to review and feedback ");
+            System.out.println("Enter 3 to reserve a table  ");
+            System.out.println("Enter 4 to modify the reservation ");
+            System.out.println("Enter 5 to display the reservation ");
+            System.out.println("Enter 6 to review and feedback ");
             System.out.print("Enter 0 to quit Enter your choice:");
             choice = input.nextInt();
 
@@ -73,7 +74,6 @@ public class JahezliApp {
                     }
                     break;
 
-
                 case 2:
                     if (choice == 2) {
 
@@ -81,9 +81,17 @@ public class JahezliApp {
                         System.out.println("***********You have to login first***********");
                     }
                     break;
-
                 case 3:
                     if (choice == 3) {
+                        System.out.print("Enter a table number to reserve: ");
+                        TableNo = input.next();
+                        reservation.ReservationTable(TableNo);
+                    } else {
+                        System.out.println("***********You have to login first***********");
+                    }
+                    break;
+                case 4:
+                    if (choice == 4) {
                         System.out.print("Enter your reservation number: ");
                         reservationNo = input.nextInt();
                         reservation.modifyReservation(reservationNo);
@@ -92,8 +100,8 @@ public class JahezliApp {
                     }
                     break;
 
-                case 4:
-                    if (choice == 4) {
+                case 5:
+                    if (choice == 5) {
                         System.out.print("Enter your reservation number: ");
                         reservationNo = input.nextInt();
                         reservation.displayReservation(reservationNo);
@@ -103,8 +111,8 @@ public class JahezliApp {
                     }
                     break;
 
-                case 5:
-                    if (choice == 5) {
+                case 6:
+                    if (choice == 6) {
                         System.out.println("Enter 1 to write your feedback: ");
                         System.out.println("Enter 2 to review the feedbacks: ");
                         System.out.print("Enter your choice: ");
@@ -137,7 +145,8 @@ public class JahezliApp {
         } while (choice != 0);
 
     }
-        /// this method for registration 
+    /// this method for registration 
+
     public static void RegisterAccount(Scanner input) throws FileNotFoundException {
         String phone;
         String city;
@@ -226,5 +235,4 @@ public class JahezliApp {
 //    private static void AddCustomer(Customer customer) throws FileNotFoundException {
 //        
 //    }
-
 }

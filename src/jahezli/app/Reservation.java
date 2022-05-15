@@ -5,6 +5,11 @@
  */
 package jahezli.app;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -73,15 +78,44 @@ public class Reservation {
         this.PaymentOption = PaymentOption;
     }
 
+      public void ReservationTable(String tableN) throws IOException {
+
+        FileReader f = new FileReader("TableReserved.txt");
+        BufferedReader br = new BufferedReader(f);
+
+        FileWriter file = new FileWriter("TableReserved.txt");//To save to file you need to create a File object.
+        PrintWriter writer = new PrintWriter(file);//Then you need a way to print to the file. You can use PrintWriter
+        int Tables[] = new int[2];
+
+        String line;
+        while ((line = br.readLine()) != null) {
+            String[] token = line.split(",");
+            for (int i = 0; i < Tables.length; i++) {
+                if (token[i].equals(tableN)) {
+                    System.out.println("That table has already been reserved" + "Please select another one or try another time");
+
+                } else {
+
+                    System.out.println("That table reserved");
+                    token[i] = tableN;
+                    writer.println(tableN);
+
+                }
+            }
+        }
+        br.close();
+        writer.close();
+    }
+      
     //check parameter and return values
     public void cancelReservation(int reservationNo) {
-     System.out.println("  Your reservation has been cancelled successfully ");
+        System.out.println("  Your reservation has been cancelled successfully ");
     }
 
     public void displayReservation(int reservationNo) {
         Place placeName = null;
         paymentMethod total = null;
-        
+
         System.out.println("Welcome");
         System.out.println("Your reservation number is: " + getReservationNo());
         System.out.println("Your reservation date is: " + getDate());
@@ -94,18 +128,22 @@ public class Reservation {
 
     public void modifyReservation(int reservationNo) throws ParseException {
         Scanner input = new Scanner(System.in);
-        String date=input.nextLine();
-        Date date1=new SimpleDateFormat("dd/mm/yyyy").parse(date);
+        String date = input.nextLine();
+        Date date1 = new SimpleDateFormat("dd/mm/yyyy").parse(date);
         Place placeName = null;
-        String placeName1=input.nextLine();
+        String placeName1 = input.nextLine();
         paymentMethod total = null;
-        
+
         System.out.println("Your reservation number is: " + getReservationNo());
-        System.out.println("Your reservation date is: ");setDate(date1);
-        System.out.println("Place name is: " );placeName.setPlaceName(placeName1);
+        System.out.println("Your reservation date is: ");
+        setDate(date1);
+        System.out.println("Place name is: ");
+        placeName.setPlaceName(placeName1);
         System.out.println(" Your reservation has been modified successfully ");
         System.out.println();
 
     }
+
+  
 
 }
