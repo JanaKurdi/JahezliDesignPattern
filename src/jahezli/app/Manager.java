@@ -5,6 +5,8 @@
  */
 package jahezli.app;
 
+import java.io.FileNotFoundException;
+
 /**
  *
  * @author mac
@@ -12,7 +14,7 @@ package jahezli.app;
 public class Manager extends User{
     String placeName;
     
-    public Manager(){
+    public Manager() throws FileNotFoundException{
     super();
 }
 

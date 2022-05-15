@@ -5,6 +5,8 @@
  */
 package jahezli.app;
 
+import java.io.FileNotFoundException;
+
 /**
  *
  * @author mac
@@ -12,11 +14,16 @@ package jahezli.app;
 public class Customer extends User {
     String phone;
     String city;
+    String password;
     Reservation reserve;
-    public Customer(){
+    public Customer() throws FileNotFoundException{
         super();
     }
-
+public Customer(String phone, String city,String password) throws FileNotFoundException{
+        super.setPassword(password);
+        super.setUserName(phone);
+        this.city = city;
+    }
     public String getPhone() {
         return phone;
     }
