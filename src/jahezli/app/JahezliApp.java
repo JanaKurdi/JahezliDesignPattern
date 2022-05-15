@@ -22,7 +22,7 @@ public class JahezliApp {
      */
     // arraylist to store customers after registration 
     ///static ArrayList<Customer> arrayOfCustomers = new ArrayList<>();
-    public static void main(String[] args) throws ParseException {
+    public static void main(String[] args) throws ParseException, FileNotFoundException {
         // TODO code application logic here
         Scanner input = new Scanner(System.in);
         int choice;
