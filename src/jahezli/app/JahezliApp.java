@@ -20,6 +20,7 @@ public class JahezliApp {
     /**
      * @param args the command line arguments
      */
+    
     // arraylist to store customers after registration 
     ///static ArrayList<Customer> arrayOfCustomers = new ArrayList<>();
     public static void main(String[] args) throws ParseException, FileNotFoundException {
@@ -204,6 +205,7 @@ public class JahezliApp {
         //String phone, String city,String password
         Customer customer = new Customer(phone, city, password);
         System.out.println(customer.getCity());
+        // this method to add to arraylist
         // AddCustomer(customer);
 
     }
