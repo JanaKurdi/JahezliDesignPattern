@@ -13,7 +13,7 @@ public class User {
     String[][] Accounts = new String[30][];
     boolean loginStatus;
     // file of  Account record 
-    File usersRecords = new File("UsersAccounts.txt");
+    File usersRecords = new File("C:\\Users\\DELL\\OneDrive\\المستندات\\NetBeansProjects\\CPIT-251-GROUP4-master\\UsersAccounts.txt\"");
     Scanner input = new Scanner(usersRecords);
 
     public User() throws FileNotFoundException {
@@ -46,9 +46,8 @@ public class User {
 // this method not completed
     public boolean login(String Username, String Password) {
         boolean state = false;
-
+        
         if (Username.equals(this.userName) && Password.equals(this.password)) {
-
             state = true;
         } else {
 

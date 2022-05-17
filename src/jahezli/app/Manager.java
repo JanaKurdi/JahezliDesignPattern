@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class Manager extends Reservation{
     String placeName;
-    private ArrayList<Reservation> reservations = new ArrayList<>();
     
     public Manager(){
         

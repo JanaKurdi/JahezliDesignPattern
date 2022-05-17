@@ -27,7 +27,7 @@ public class Reservation {
     int personNo;
     int reservationNo;
     String PaymentOption;
-    private ArrayList<Reservation> reservations = new ArrayList<>();
+    public ArrayList<Reservation> reservations = new ArrayList<>();
     public Reservation() {
 
     }

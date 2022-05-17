@@ -3,23 +3,36 @@ package jahezli.app;
 import java.io.FileNotFoundException;
 
 public class Customer extends User {
+
     String phone;
     String city;
+    String name;
     String password;
     Reservation reserve;
     private double totalPrice = 0;
     private int CVV;
     private String cardExpirationDate;
     private String cardNum;
-    public Customer() throws FileNotFoundException{
+
+    public Customer() throws FileNotFoundException {
         super();
     }
-public Customer(String phone, String city,String password,double totalPrice) throws FileNotFoundException{
+
+    public Customer(String phone, String city, String password, double totalPrice) throws FileNotFoundException {
         super.setPassword(password);
         super.setUserName(phone);
         this.city = city;
         this.totalPrice = totalPrice;
     }
+
+    public Customer(String name, String phone, String city, String password) throws FileNotFoundException {
+        this.name = name;
+        super.setPassword(password);
+        super.setUserName(phone);
+        this.city = city;
+        this.totalPrice = totalPrice;
+    }
+
     public String getPhone() {
         return phone;
     }
@@ -35,7 +48,13 @@ public Customer(String phone, String city,String password,double totalPrice) thr
     public void setCity(String city) {
         this.city = city;
     }
+ public String getName() {
+        return name;
+    }
 
+    public void setName(String name) {
+        this.name = name;
+    }
     public Reservation getReserve() {
         return reserve;
     }
@@ -43,16 +62,20 @@ public Customer(String phone, String city,String password,double totalPrice) thr
     public void setReserve(Reservation reserve) {
         this.reserve = reserve;
     }
-     //check method parameter and return
-     public void reserve(){
-         
-     }
-     public double getTotalPrice(){
-         return totalPrice;
-     }
-     public void setTotalPrice(){
-         this.totalPrice = totalPrice;
-     }
+    //check method parameter and return
+
+    public void reserve() {
+
+    }
+
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice() {
+        this.totalPrice = totalPrice;
+    }
+
     public paymentMethod makePayment() {
         double total = getTotalPrice();
         while (true) {
@@ -110,7 +133,8 @@ public Customer(String phone, String city,String password,double totalPrice) thr
         }
 
     }
-       public Cash makePaymentByCash(double totalPrice) {
+
+    public Cash makePaymentByCash(double totalPrice) {
         Cash cashPayment = new Cash((int) totalPrice);
         return cashPayment;
     }
@@ -120,5 +144,5 @@ public Customer(String phone, String city,String password,double totalPrice) thr
         return creditCardPayment;
 
     }
-    
+
 }
