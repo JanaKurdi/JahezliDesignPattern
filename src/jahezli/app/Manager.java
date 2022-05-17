@@ -1,21 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package jahezli.app;
 
-import java.io.FileNotFoundException;
+import java.util.ArrayList;
 
-/**
- *
- * @author mac
- */
-public class Manager extends User{
+public class Manager extends Reservation{
     String placeName;
+    private ArrayList<Reservation> reservations = new ArrayList<>();
     
-    public Manager() throws FileNotFoundException{
-    super();
+    public Manager(){
+        
+}
+    public Manager(String placeName){
+     super();
+     this.placeName = placeName;     
 }
 
     public String getPlaceName() {
@@ -27,10 +23,34 @@ public class Manager extends User{
     }
     
     public String confirmReservation(int reservationNo){
-        return null;
-    }
+		for (int i = 0; i < reservations.size(); i++) {
+			Reservation Temp = reservations.get(i);
+
+			if (Temp.getReservationNo() == reservationNo) {
+				//check that the class dose not have a trainer
+				if (Temp.getReservationNo() == 0) {
+					Temp.setReservationNo(0);
+					reservations.add(Temp);
+					return Temp.getReservationNo() + " Reservation is confirmed";
+				} else {
+					return Temp.getReservationNo() + " Class is already assigned to Trainer";
+				}
+
+			}
+		}
+		return "";
+	}
     
+    @Override
      public String cancelReservation(int reservationNo){
+		for (int i = 0; i < reservations.size(); i++) {
+			Reservation Temp = reservations.get(i);
+			if (Temp.getReservationNo() == reservationNo) {
+
+				reservations.remove(i);
+				return Temp.getReservationNo() + " The reservation has been cancelled successfully";
+			}
+		}
         return null;
-    }
+	}
 }

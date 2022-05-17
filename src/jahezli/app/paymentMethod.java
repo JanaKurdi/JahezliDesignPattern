@@ -1,22 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package jahezli.app;
 
-/**
- *
- * @author mac
- */
+import java.util.*;
+
 public class paymentMethod {
+    Reservation resevPay;
     double cost;
-    String paymentDate;//date or String
+    Date paymentDate;
+    Scanner input = new Scanner(System.in);
    
     public paymentMethod(){
    
 }
-   
     public double getCost() {
         return cost;
     }
@@ -25,14 +19,14 @@ public class paymentMethod {
         this.cost = cost;
     }
 
-    public String getPaymentDate() {
+    public Date getPaymentDate() {
         return paymentDate;
     }
 
-    public void setPaymentDate(String paymentDate) {
+    public void setPaymentDate(Date paymentDate) {
         this.paymentDate = paymentDate;
     }
-    
-    
-    
+       public String PaymentDetails() {
+        return "The payment amount is " + cost;
+    }
 }

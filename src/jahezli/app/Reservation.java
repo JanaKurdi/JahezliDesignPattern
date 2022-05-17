@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -26,7 +27,7 @@ public class Reservation {
     int personNo;
     int reservationNo;
     String PaymentOption;
-
+    private ArrayList<Reservation> reservations = new ArrayList<>();
     public Reservation() {
 
     }
@@ -108,9 +109,18 @@ public class Reservation {
     }
       
     //check parameter and return values
-    public void cancelReservation(int reservationNo) {
-        System.out.println("  Your reservation has been cancelled successfully ");
-    }
+    public String cancelReservation(int reservationNo) {
+		for (int i = 0; i < reservations.size(); i++) {
+			Reservation Temp = reservations.get(i);
+			if (Temp.getReservationNo() == reservationNo) {
+
+				reservations.remove(i);
+				return Temp.getReservationNo() + " Your reservation has been cancelled successfully";
+			}
+		}
+
+		return "This reservation is not Assigned to you";
+	}
 
     public void displayReservation(int reservationNo) {
         Place placeName = null;
@@ -135,15 +145,18 @@ public class Reservation {
         paymentMethod total = null;
 
         System.out.println("Your reservation number is: " + getReservationNo());
-        System.out.println("Your reservation date is: ");
-        setDate(date1);
-        System.out.println("Place name is: ");
-        placeName.setPlaceName(placeName1);
+        System.out.println("Your reservation date is: ");setDate(date1);
+        System.out.println("Place name is: " );placeName.setPlaceName(placeName1);
+        System.out.println("The total cost is: " + total.getCost());
         System.out.println(" Your reservation has been modified successfully ");
         System.out.println();
 
     }
-
-  
-
+        public ArrayList<Reservation> getReservation(){
+        return reservations;
+    }
+    
+    public void setReservation(ArrayList<Reservation> reservations){
+        this.reservations = reservations;
+    }
 }

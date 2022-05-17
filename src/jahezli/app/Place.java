@@ -1,30 +1,52 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package jahezli.app;
 
-/**
- *
- * @author mac
- */
+import java.util.ArrayList;
+
 public class Place {
     String placeName;
+    int placeNo;
     String address;
     String phoneNo;
     Table[]tableArray;
+    Place[]Place;
  
     public Place(){
     
 }
+    public Place(String placeName,int placeNo,String address,String phoneNo,Table[]tableArray){
+        this.placeName = placeName;
+        this.placeNo = placeNo;
+        this.address = address;
+        this.phoneNo = phoneNo;
+        this.tableArray = tableArray;
+}
+    public ArrayList<Table> getPlace(){
+        
+        ArrayList<Table> Tables = new ArrayList();
+        Tables.add(new Table(7,"Piatto",4));
+        Tables.add(new Table(10,"San Carlo",4));
+        Tables.add(new Table(6,"Baco",5));
+        return Tables;
+        
+    }
 
+//    public String bookTable(int Tablenum){
+//        
+//    }
     public String getPlaceName() {
         return placeName;
     }
 
     public void setPlaceName(String placeName) {
         this.placeName = placeName;
+    }
+    
+    public int getPlaceNo(){
+        return placeNo;
+    }
+    
+    public void setPlaceNo(int placeNo){
+        this.placeNo = placeNo;
     }
 
     public String getAddress() {
@@ -51,10 +73,16 @@ public class Place {
         this.tableArray = tableArray;
     }
     
-    public String searchPlace(){
-        
-        return placeName;
+    public int searchPlace(int info) {
+        int i = 0;
+        while (Place[i] != null) {
+
+            if (Place[i].getPlaceNo() == info) {
+
+                return i;
+            }
+            i++;
+        }
+        return -1;
     }
-    
-    
 }

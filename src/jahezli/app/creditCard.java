@@ -1,23 +1,39 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package jahezli.app;
 
-/**
- *
- * @author mac
- */
+import java.io.*;
+import java.util.regex.*;
+
 public class creditCard extends paymentMethod {
 
     String bankName;
     private String cardNo;
     String expiredDate;
     private int CVVNo;
+    Double total;
+    private File file = new File("CreditCardinfo.txt");
 
     public creditCard() {
-        super();
+    }
+    
+    public creditCard(Double total,String Cardno, String ExpiredDate, int CVVno){
+         super();
+//         this.bankName = Bankname;
+//         this.cardNo = Cardno;
+//         this.expiredDate = ExpiredDate;
+//         this.CVVNo = CVVno;
+//         this.total = total;
+//         
+                 try {
+            PrintWriter writer = new PrintWriter(file);
+            writer.print("The payment amount : " + cost
+                    + "\npayed by the card : " + Cardno
+                    + "\nwith the expiry date : " + ExpiredDate
+                    + "\nCVV : " + CVVno);
+            writer.flush();
+            writer.close();
+        } catch (FileNotFoundException ex) {
+            System.out.println("Sorry, File not found!");
+        }  
     }
 
     public String getBankName() {
@@ -65,5 +81,10 @@ public class creditCard extends paymentMethod {
         }
         return authorizedcheck;
     }
-
+    
+      public String toString() {
+        return "The payment amount : " + cost
+                + "\npayed by the card : " + cardNo
+                + "\nwith the expiry date : " + expiredDate;
+    }  
 }

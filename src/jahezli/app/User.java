@@ -1,29 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package jahezli.app;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-
-import java.io.IOException;
-
+import java.io.*;
 import java.util.Scanner;
 
-/**
- *
- * @author mac
- */
-/**
- *
- * @author mac
- */
 public class User {
     /// need to modify and complete the code
     String Phone;
     private String password;
+    String userName;
     // to read account and to store Accounts
        // array to store the record of accounts
     String[][] Accounts = new String[30][];
@@ -60,15 +44,18 @@ public class User {
         this.loginStatus = loginStatus;
     }
 // this method not completed
-    public boolean login() {
-        boolean loginCheck = false;
+    public boolean login(String Username, String Password) {
+        boolean state = false;
 
-//        if (login.checkPassword()) {
-//            System.out.println("You are logged in!");
-//        } else {
-//            System.out.println("The username and password you entered are incorrect.");
-//        }
-        return loginCheck;
+        if (Username.equals(this.userName) && Password.equals(this.password)) {
+
+            state = true;
+        } else {
+
+            state = false;
+
+        }
+        return state;
     }
 // this method store account record 
     public void AccountsRecords() throws IOException {
@@ -88,15 +75,63 @@ public class User {
         input.close();
     }
 
-//    public boolean checkAccount(String phone ,String password) {
-//        boolean check = false;
-//
-//        return check;
-//    }
-//    public boolean NewAccount (){
-//        boolean Sucess = false;
-//        
-//        return Sucess;
-//    }
+    public boolean newAccount(String Username, String password) throws FileNotFoundException, IOException {
+        Boolean flag = true;
+        File file1 = new File("Users.txt");
+
+        Scanner input = new Scanner(file1);
+        FileWriter output = new FileWriter(file1.getAbsoluteFile(), true);
+
+        String command = "";
+
+        while (input.hasNextLine()) {
+
+            command = input.nextLine().trim();
+            String[] arr = command.split(",");
+
+            if (arr[0].equalsIgnoreCase(Username)) {
+                flag = false;
+
+            }
+
+        }
+
+        if (flag == true) {
+            output.write("\n");
+            output.write(Username + "," + password);
+            output.close();
+            input.close();
+            return true;
+
+        }
+        output.close();
+        input.close();
+        return flag;
+
+    }
+        public boolean checkAccount(String Username, String pass) throws FileNotFoundException {
+
+        File file1 = new File("Users.txt");
+
+        Scanner input = new Scanner(file1);
+
+        String command = "";
+
+        while (input.hasNextLine()) {
+
+            command = input.nextLine().trim();
+            String[] arr = command.split(",");
+
+            if ((arr[0].equalsIgnoreCase(Username)) && (arr[1].equalsIgnoreCase(pass))) {
+                System.out.println(" correct ");
+                return true;
+
+            }
+
+        }
+
+        return false;
+
+    }
 }
 

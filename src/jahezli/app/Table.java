@@ -1,14 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package jahezli.app;
 
-/**
- *
- * @author mac
- */
 public class Table {
     int tableNo;
     String placeName;
@@ -17,6 +8,13 @@ public class Table {
    public Table(){
     
 } 
+       public Table(int tableNo, String placeName,int chair) {
+        
+        this.tableNo = tableNo;
+        this.placeName = placeName;
+        this.chair = chair;
+        
+    }
 
     public int getTableNo() {
         return tableNo;
@@ -34,5 +32,8 @@ public class Table {
         this.chair = chair;
     }
    
-    
+        public String toString() {
+        return "Place name is " + placeName + " Table Number is " 
+                + tableNo + "The Table Has " + chair + " Chairs";
+    }
 }
