@@ -122,10 +122,10 @@ public class Reservation {
 		return "This reservation is not Assigned to you";
 	}
 
-    public void displayReservation(int reservationNo) {
+    public String displayReservation(int reservationNo) {
         Place placeName = null;
         paymentMethod total = null;
-
+        String s = placeName.getPlaceName();
         System.out.println("Welcome");
         System.out.println("Your reservation number is: " + getReservationNo());
         System.out.println("Your reservation date is: " + getDate());
@@ -133,7 +133,7 @@ public class Reservation {
         System.out.println("Total amount is: " + total.getCost());
         System.out.println(" Enjoy. ");
         System.out.println();
-
+return s;
     }
 
     public void modifyReservation(int reservationNo) throws ParseException {
