@@ -6,9 +6,9 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
-
+// Razan Alshaikh
 public class JahezliApp {
-
+ 
     // arraylist to store customers after registration 
     static ArrayList<Customer> arrayOfCustomers = new ArrayList<>();
     static boolean customersatute;
