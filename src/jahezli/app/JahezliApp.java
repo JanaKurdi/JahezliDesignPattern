@@ -247,7 +247,7 @@ public class JahezliApp {
         if (login_statue = true) {
             System.out.println("WELCOME TO JahezliApp! ");
             customersatute = true;
-
+//
         } else {
             System.out.println("incorrect password or username");
         }
