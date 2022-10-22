@@ -17,13 +17,12 @@ public class creditCard extends paymentMethod {
     
     public creditCard(Double total,String Cardno, String ExpiredDate, int CVVno){
          super();
-//         this.bankName = Bankname;
-//         this.cardNo = Cardno;
-//         this.expiredDate = ExpiredDate;
-//         this.CVVNo = CVVno;
-//         this.total = total;
-//         
-                 try {
+         this.cardNo = Cardno;
+         this.expiredDate = ExpiredDate;
+         this.CVVNo = CVVno;
+         this.total = total;
+         
+                try {
             PrintWriter writer = new PrintWriter(file);
             writer.print("The payment amount : " + cost
                     + "\npayed by the card : " + Cardno

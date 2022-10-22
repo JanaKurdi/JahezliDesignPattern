@@ -1,17 +1,65 @@
 package jahezli.app;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
-public class Manager extends Reservation{
-    String placeName;
-    
-    public Manager(){
-        
-}
-    public Manager(String placeName){
-     super();
-     this.placeName = placeName;     
-}
+public class Manager implements User, Login {
+
+    private static Manager manager = null;
+    private static String phoneNo;
+    private static String password;
+    public static String placeName;
+    static ArrayList<User> usersArray = new ArrayList();
+    static ArrayList<Reservation> reservationArray = new ArrayList();
+    public static String reservationTime = null;
+    public static String reservationDate = null;
+    public static String price = null;
+
+    private Manager() {
+
+    }
+
+    private Manager(String phoneNum, String password) {
+
+    }
+
+    public static Manager getManager() {
+        if (manager == null) {
+            phoneNo = "0551234521";
+            password = "manager123";
+            manager = new Manager(phoneNo, password);
+        }
+        return manager;
+    }
+
+    public static ArrayList<User> getUsersArray() {
+        return usersArray;
+    }
+
+    @Override
+    public String getPhoneNo() {
+        return phoneNo;
+    }
+
+    @Override
+    public String getPassword() {
+        return password;
+    }
+
+    @Override
+    public void addUser(User user) {
+        usersArray.add(user);
+    }
+
+    @Override
+    public void setPhoneNo(String phoneNo) {
+        Manager.phoneNo = phoneNo;
+    }
+
+    @Override
+    public void setPassword(String password) {
+        Manager.password = password;
+    }
 
     public String getPlaceName() {
         return placeName;
@@ -20,36 +68,91 @@ public class Manager extends Reservation{
     public void setPlaceName(String placeName) {
         this.placeName = placeName;
     }
-    
-    public String confirmReservation(int reservationNo){
-		for (int i = 0; i < reservations.size(); i++) {
-			Reservation Temp = reservations.get(i);
 
-			if (Temp.getReservationNo() == reservationNo) {
-				//check that the class dose not have a trainer
-				if (Temp.getReservationNo() == 0) {
-					Temp.setReservationNo(0);
-					reservations.add(Temp);
-					return Temp.getReservationNo() + " Reservation is confirmed";
-				} else {
-					return Temp.getReservationNo() + " Class is already assigned to Trainer";
-				}
+    public static ArrayList<Reservation> getReservationArray() {
+        return reservationArray;
+    }
 
-			}
-		}
-		return "";
-	}
-    
-    @Override
-     public String cancelReservation(int reservationNo){
-		for (int i = 0; i < reservations.size(); i++) {
-			Reservation Temp = reservations.get(i);
-			if (Temp.getReservationNo() == reservationNo) {
+    public static void setReservationArray(ArrayList<Reservation> reservationArray) {
+        Manager.reservationArray = reservationArray;
+    }
 
-				reservations.remove(i);
-				return Temp.getReservationNo() + " The reservation has been cancelled successfully";
-			}
-		}
+    public static String getReservationTime() {
+        return reservationTime;
+    }
+
+    public static void setReservationTime(String reservationTime) {
+        Manager.reservationTime = reservationTime;
+    }
+
+    public static String getReservationDate() {
+        return reservationDate;
+    }
+
+    public static void setReservationDate(String reservationDate) {
+        Manager.reservationDate = reservationDate;
+    }
+
+    public static String getPrice() {
+        return price;
+    }
+
+    public static void setPrice(String price) {
+        Manager.price = price;
+    }
+
+    public static User CheckUserexistence(String phoneNo) {
+        for (int i = 0; i < usersArray.size(); i++) {
+            User checker = usersArray.get(i);
+            if (phoneNo.equals(checker.getPhoneNo())) {
+                return checker;
+            }
+        }
         return null;
-	}
+
+    }
+
+    @Override
+    public void Access(String phoneNo, String password) {
+        Scanner input = new Scanner(System.in);
+        System.out.println("---------------------------------------------------");
+        System.out.println("                   Manager menu                    ");
+        System.out.println("---------------------------------------------------");
+        System.out.println("Enter 1 to display all reservation");
+        System.out.println("Enter 2 to log out");
+        int managerChoice = input.nextInt();
+
+        switch (managerChoice) {
+
+            case 1:
+                System.out.println("---------------------------------------------------");
+                System.out.println("                Display all reservation            ");
+                System.out.println("---------------------------------------------------");
+                displayAllReservations();
+                System.out.println("---------------------------------------------------");
+                System.out.println("");
+                break;
+
+            case 2:
+                return;
+
+            default:
+                System.out.println();
+                System.out.println("Wrong entry please try again:");
+                System.out.println("---------------------------------------------------");
+                System.out.println("");
+
+        }
+
+    }
+
+    public void displayAllReservations() {
+        for (int i = 0; i < reservationArray.size(); i++) {
+            Reservation reserve = reservationArray.get(i);
+            System.out.println(reserve);
+
+        }
+
+    }
+
 }

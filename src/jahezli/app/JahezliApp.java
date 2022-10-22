@@ -1,47 +1,39 @@
 package jahezli.app;
 
-import jahezli.app.Customer;
 import java.io.*;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
-// Razan Alshaikh
+
 public class JahezliApp {
- 
-    // arraylist to store customers after registration 
-    static ArrayList<Customer> arrayOfCustomers = new ArrayList<>();
-    static boolean customersatute;
-    static Customer customer;
 
     public static void main(String[] args) throws ParseException, FileNotFoundException, IOException {
         // TODO code application logic here
         Scanner input = new Scanner(System.in);
-        int choice;
-        int reservationNo;
-        String TableNo;
-        int choice2;
+        Manager manager = Manager.getManager();
+        manager.addUser(manager);
 
-        Reservation reservation = null;
+        int userChoice;
+        int userChoice2;
         do {
             System.out.println("---------------------------------------------------");
             System.out.println("             Welcome to Jahezli reservation app   ");
             System.out.println("---------------------------------------------------");
-            System.out.println("Enter 1 to login");
+            System.out.println("Enter 1 to Login");
             System.out.println("Enter 2 to search for Place ");
             System.out.println("Enter 3 to reserve a table  ");
             System.out.println("Enter 4 to modify the reservation ");
             System.out.println("Enter 5 to display the reservation ");
             System.out.println("Enter 6 to pay the amount ");
-            System.out.println("Enter 7 to review and feedback ");
             System.out.print("Enter 0 to quit Enter your choice:");
-            choice = input.nextInt();
+            userChoice = input.nextInt();
 
-            switch (choice) {
+            switch (userChoice) {
                 case 0:
-                    if (choice == 0) {
+                    if (userChoice == 0) {
                         System.out.println("---------------------------------------------------");
-                        System.out.println("*** Thank you for Visiting ***");
+                        System.out.println("*** Thank you for Visiting Jahezli app ***");
                         System.out.println("---------------------------------------------------");
                         System.exit(0);
 
@@ -52,14 +44,14 @@ public class JahezliApp {
 
                 case 1:
 
-                    //  // Log in and registration 
+                    //  // Login and registration 
                     System.out.println("---------------------------------------------------");
                     System.out.println("                Jahezli reservation                ");
                     System.out.println("---------------------------------------------------");
                     System.out.println("if you have a account Enter 1:");
                     System.out.println("if you don't have an account Enter 2:");
-                    choice2 = input.nextInt();
-                    if (choice2 == 1) {
+                    userChoice2 = input.nextInt();
+                    if (userChoice2 == 1) {
                         //this method below not completed 
                         login(input);
 
@@ -83,7 +75,7 @@ public class JahezliApp {
                     }
                     break;
                 case 3:
-                    if (choice == 3) {
+                    if (userChoice == 3) {
                         System.out.print("Enter a table number to reserve: ");
                         TableNo = input.next();
                         reservation.ReservationTable(TableNo);
@@ -93,7 +85,7 @@ public class JahezliApp {
                     }
                     break;
                 case 4:
-                    if (choice == 4) {
+                    if (userChoice == 4) {
                         System.out.print("Enter your reservation number: ");
                         reservationNo = input.nextInt();
                         reservation.modifyReservation(reservationNo);
@@ -103,7 +95,7 @@ public class JahezliApp {
                     break;
 
                 case 5:
-                    if (choice == 5) {
+                    if (userChoice == 5) {
                         System.out.print("Enter your reservation number: ");
                         reservationNo = input.nextInt();
                         reservation.displayReservation(reservationNo);
@@ -125,7 +117,7 @@ public class JahezliApp {
                     break;
 
                 case 7:
-                    if (choice == 7) {
+                    if (userChoice == 7) {
                         System.out.println("Enter 1 to write your feedback: ");
                         System.out.println("Enter 2 to review the feedbacks: ");
                         System.out.print("Enter your choice: ");
@@ -155,7 +147,7 @@ public class JahezliApp {
                     break;
             }
 
-        } while (choice != 0);
+        } while (userChoice != 0);
 
     }
     /// this method for registration 
@@ -266,73 +258,5 @@ public class JahezliApp {
         }
         input.close();
     }
-
-    public static void getReviews(String placeName) throws FileNotFoundException {
-        File inputFile = new File("C:\\Users\\اسامه بايونس\\Desktop\\Reviews.txt");
-        if (!inputFile.exists()) {
-            System.out.println("Input files does not exist !!");
-            System.exit(0);
-        }
-        Scanner input = new Scanner(inputFile);
-        String currPlaceName = "";
-        String review = "";
-        String temp1 = "";
-        String temp2 = "";
-        boolean notFound = true;
-        int placeCounter = 0;
-        ArrayList<String> reviews = new ArrayList<>();
-        while (input.hasNext()) {
-            temp1 = input.next();
-            if (!temp1.equals("Place_Name:")) {
-                continue;
-            }
-            currPlaceName = input.nextLine().trim();
-            if (currPlaceName.equals(placeName)) {
-                temp2 = input.next();
-                if (!temp2.equals("Review:")) {
-                    continue;
-                }
-                review = input.nextLine().trim();
-                reviews.add(review);
-                notFound = false;
-                placeCounter++;
-            }
-
-        }
-        System.out.println();
-        if (notFound) {
-            System.out.println("Not found any place with the required name \"" + placeName + "\"\n");
-        } else {
-            if (placeCounter == 1) {
-                System.out.println("There is 1 review found for the place \"" + placeName + "\":\n");
-            } else {
-                System.out.println("There are " + placeCounter + " reviews found for the place \"" + placeName + "\":\n");
-            }
-            for (int i = 0; i < placeCounter; i++) {
-                System.out.println("Review " + (i + 1) + ": " + reviews.get(i));
-            }
-            System.out.println();
-        }
-    }
-
-    public static void printFeedback(String placeName) throws FileNotFoundException {
-
-        Scanner in = new Scanner(System.in);
-
-        File outputFile = new File("C:\\Users\\اسامه بايونس\\Desktop\\Feedback.txt");
-        PrintWriter output = new PrintWriter(outputFile);
-
-        System.out.print("Enter your feedback about the place \"" + placeName + "\":");
-        String feedback = in.nextLine();
-
-        output.println(feedback);
-        output.flush();
-
-    }
-
-//    public static void searchPlaces() throws FileNotFoundException {
-//        Place p = new Place();
-//        p.displayPlaces();
-//    }
 
 }
