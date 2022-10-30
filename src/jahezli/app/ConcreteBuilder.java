@@ -5,11 +5,13 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
+
 /**
  *
  * @author renad
  */
 public class ConcreteBuilder implements ReservationBuilder {
+
     Scanner input = new Scanner(System.in);
     private Reservation reservation;
 
