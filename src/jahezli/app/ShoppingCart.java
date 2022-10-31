@@ -13,7 +13,7 @@ public class ShoppingCart {
 
     Scanner input = new Scanner(System.in);
     //List of Resvervation
-    List<Reservation> Reserve;
+    private List<Reservation> Reserve;
 
     public ShoppingCart() {
         this.Reserve = new ArrayList<Reservation>();

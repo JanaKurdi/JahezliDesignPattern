@@ -142,12 +142,4 @@ public class Manager implements User, Login {
         }   
     }
 
-//    public void displayAllReservations() {
-//        for (int i = 0; i < reservationArray.size(); i++) {
-//            Reservation reserve = reservationArray.get(i);
-//            System.out.println(reserve);
-//        }
-//
-//    }
-
 }

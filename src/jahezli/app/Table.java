@@ -31,9 +31,5 @@ public class Table {
     public void setChair(int chair) {
         this.chair = chair;
     }
-   
-        public String toString() {
-        return "Place name is " + placeName + " Table Number is " 
-                + tableNo + "The Table Has " + chair + " Chairs";
-    }
+
 }

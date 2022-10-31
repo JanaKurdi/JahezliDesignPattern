@@ -15,11 +15,6 @@ public class JahezliApp {
 
     public static void main(String[] args) throws ParseException, FileNotFoundException, IOException {
         // TODO code application logic here
-
-        // Singletone Manager
-        Manager manager = Manager.getManager();
-        // manager.addUser(manager);
-
         int userChoice = 0;
 
         Menus(1);
@@ -103,7 +98,8 @@ public class JahezliApp {
         System.out.print("Enter your password: ");
         String Password = input.next();
         if (phone.equals("0551234521")) {
-            Manager manager = Manager.getManager();
+            // Singletone Manager
+        Manager manager = Manager.getManager();
             Menus(2);
             manager.Access(phone, Password);
             Menus(2);
