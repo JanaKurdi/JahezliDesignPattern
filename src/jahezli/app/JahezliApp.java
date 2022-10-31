@@ -181,81 +181,75 @@ public class JahezliApp {
             }
             }
         }
-        //boolean login_statue = user.Access(userName, Password);
-//        if (login_statue = true) {
-//            System.out.println("WELCOME TO JahezliApp! ");
-//            boolean customersatute = true;
-//
-//        } else {
-//            System.out.println("incorrect password or username");
-//        }
     }
-}
-/// this method for registration @ abeer
 
-//    public static void RegisterAccount(Scanner input) throws FileNotFoundException {
-//        String phone;
-//        String city = null;
-//        String password;
-//        ArrayList<User> usersArray = new ArrayList();
-//        // registration 
-//        System.out.println("---------------------------------------------------");
-//        System.out.println("                 Registration Page                 ");
-//        System.out.println("---------------------------------------------------");
-//        String name;
-//        System.out.println("Enter your full name :");
-//        name = input.next();
-//        // Phone Number
-//        while (true) {
-//            // take phone and check if it correct
-//            System.out.println("Enter Phone Number Starting with 05:");
-//            phone = input.next();
-//            if (phone.length() == 10 && phone.startsWith("05")) {
-//                System.out.println("Phone number is correct ");
-//                break;
-//            }
-//        }
-//        // password i didn't put any conditions on the password
-//        System.out.println("Enter password:");
-//        password = input.next();
-//        // CITY 
-//        while (true) {
-//            if (city.equals("1") || city.equals("2") || city.equals("3") || city.equals("4")) {
-//                break;
-//            } else {
-//                System.out.println("---------------------------------------------------");
-//                System.out.println("                 Select your City:                 ");
-//                System.out.println("---------------------------------------------------");
-//                System.out.println("Jeddah Enter 1");
-//                System.out.println("Mecca Enter 2");
-//                System.out.println("Riyadh Enter 3");
-//                System.out.println("Dammam Enter 4");
-//                city = input.next();
-//            }
-//
-//            // accroding to selection add the name of the city
-//            switch (city) {
-//                case "1":
-//                    city = "Jeddah";
-//                    break;
-//                case "2":
-//                    city = "Mecca";
-//                    break;
-//                case "3":
-//                    city = "Riyadh";
-//                    break;
-//                case "4":
-//                    city = "Dammam";
-//                    break;
-//            }
-//        }
-//        /// insert the custmer method not completed
-//        // here i create an object of customer
-//        //String phone, String city,String password
-//        Customer customer = new Customer(name, phone, city, password);
-//        usersArray.add(customer);
-//        System.out.println("thank you!" + customer.getName());
-//        System.out.println("Account Created Successfully!");
-//
-//    }
+/// this method for registration @ abeer
+    public static void RegisterAccount(Scanner input) throws FileNotFoundException {
+        String phone;
+        String city = null;
+        String password;
+        ArrayList<User> usersArray = new ArrayList();
+        // registration 
+        System.out.println("---------------------------------------------------");
+        System.out.println("                 Registration Page                 ");
+        System.out.println("---------------------------------------------------");
+        String name;
+        System.out.println("Enter your full name :");
+        name = input.next();
+        // Phone Number
+        while (true) {
+            // take phone and check if it correct
+            System.out.println("Enter Phone Number Starting with 05:");
+            phone = input.next();
+            if (phone.length() == 10 && phone.startsWith("05")) {
+                System.out.println("Phone number is correct ");
+                break;
+            }
+        }
+        // password i didn't put any conditions on the password
+        System.out.println("Enter password:");
+        password = input.next();
+        // CITY 
+        while (true) {
+            if (city.equals("1") || city.equals("2") || city.equals("3") || city.equals("4")) {
+                break;
+            } else {
+                System.out.println("---------------------------------------------------");
+                System.out.println("                 Select your City:                 ");
+                System.out.println("---------------------------------------------------");
+                System.out.println("Jeddah Enter 1");
+                System.out.println("Mecca Enter 2");
+                System.out.println("Riyadh Enter 3");
+                System.out.println("Dammam Enter 4");
+                city = input.next();
+            }
+
+            // accroding to selection add the name of the city
+            switch (city) {
+                case "1":
+                    city = "Jeddah";
+                    break;
+                case "2":
+                    city = "Mecca";
+                    break;
+                case "3":
+                    city = "Riyadh";
+                    break;
+                case "4":
+                    city = "Dammam";
+                    break;
+            }
+        }
+        /// insert the custmer method not completed
+        // here i create an object of customer
+        //String phone, String city,String password
+        Customer customer = new Customer(name, phone, city, password);
+        usersArray.add(customer);
+        System.out.println("thank you!" + customer.getName());
+        System.out.println("Account Created Successfully!");
+
+    }
+
+
+}
 //>>>>>>> origin/master

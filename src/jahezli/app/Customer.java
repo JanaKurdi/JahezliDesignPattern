@@ -12,7 +12,6 @@ public class Customer implements User , Login {
     String name;
     String password;
     Reservation reserve;
-    private double totalPrice = 0;
 
 
     public Customer(){
@@ -28,7 +27,6 @@ public class Customer implements User , Login {
 //        super.setPassword(password);
 //        super.setUserName(phone);
         this.city = city;
-        this.totalPrice = totalPrice;
     }
 
     public String getPhone() {
@@ -67,14 +65,7 @@ public class Customer implements User , Login {
     public void reserve() {
 
     }
-//////////////////////////////////////////
-    public double getTotalPrice() {
-        return totalPrice;
-    }
-
-    public void setTotalPrice() {
-        this.totalPrice = totalPrice;
-    }
+////////////////////////////////////
 // here we have method that should be implemented
     @Override
     public String getPhoneNo() {
