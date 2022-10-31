@@ -1,10 +1,64 @@
 package jahezli.app;
 
+import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Checker {
+    ////////////////////////////Check PayPal//////////////////////////////
+    ////////////////////////////// Email /////////////////////////////////////////////// 
 
+    public static String checkEmail(String e, Scanner input) {
+        boolean isCorrectEmail = isCorrectEmail(e);
+        if (isCorrectEmail == false) {
+            do {
+                System.out.println("please enter your email correctly (email:########@#######): ");
+                e = input.next();
+                isCorrectEmail = isCorrectEmail(e);
+            } while (isCorrectEmail == false);
+        }
+        return e;
+    }
+
+    public static boolean isCorrectEmail(String e) {
+        boolean isNumber = checkIsNumber(e);
+        if (isNumber == true) {
+            return false;
+        }
+        boolean isCorrectEmail = e.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$") && !isNumber ? true : false;
+        return isCorrectEmail;
+    }
+///////////////////////////// End of Email ///////////////////////////////////////////
+    ///////////////////////// Password ////////////////////////////////////////
+
+    public static String checkPassword(String pass, Scanner input) {
+        boolean isValidPassword = isValidPassword(pass);
+        if (isValidPassword == false) {
+            do {
+                System.out.println("invaild password"
+                        + " please enter a vaild password:");
+                pass = input.next();
+                isValidPassword = isValidPassword(pass);
+            } while (isValidPassword == false);
+        }
+        return pass;
+    }
+
+    public static boolean isValidPassword(String password) {
+        // for checking if password length
+        // is less than 8 
+        if (password.length() < 8) {
+            return false;
+        }
+        // to check space
+        if (password.contains(" ")) {
+            return false;
+        }
+        // if all conditions fails
+        return true;
+    }
+
+//////////////////////////Check credit card//////////////////////////////////
     public static boolean isValidExpiryDate(String ExpiryDate) {
 
         //check wheter the first two "MM" "month" characters are digits or not 
@@ -40,7 +94,6 @@ public class Checker {
         if (str == null) {
             return false;
         }
-
         // Find match between given string
         // and regular expression
         // using Pattern.matcher()
@@ -55,70 +108,48 @@ public class Checker {
         try {
             long cardNumber = Long.parseLong(cardNum);
             return (getSize(cardNumber) >= 13
-                    && getSize(cardNumber) <= 16)
-                    && (prefixMatched(cardNumber, 4)
-                    || prefixMatched(cardNumber, 5)
-                    || prefixMatched(cardNumber, 37)
-                    || prefixMatched(cardNumber, 6))
-                    && ((sumOfDoubleEvenPlace(cardNumber)
-                    + sumOfOddPlace(cardNumber)) % 10 == 0);
+                    && getSize(cardNumber) <= 16);
         } catch (Exception e) {
             return false;
         }
 
     }
 
-    public static int sumOfDoubleEvenPlace(long cardNumber) {
-        int sum = 0;
-        String num = cardNumber + "";
-        for (int i = getSize(cardNumber) - 2; i >= 0; i -= 2) {
-            sum += getDigit(Integer.parseInt(num.charAt(i) + "") * 2);
+    ///////////////////CHECK CARD NAME /////////////////////////
+    public static String checkCardHolderName(String fn, Scanner input) {
+        boolean isVaildName = isVaildName(fn);
+        if (isVaildName == false) {
+            do {
+                System.out.println("please enter Card Holder name (No numbers or Symbols ) :");
+                fn = input.next();
+                isVaildName = isVaildName(fn);
+            } while (isVaildName == false);
         }
-        return sum;
+        return fn;
     }
 
-    // Return the number if it is a single digit, otherwise,
-    // return the sum of the two digits
-    public static int getDigit(int number) {
-        if (number < 9) {
-            return number;
+    public static boolean checkIsNumber(String num) {
+        boolean isNumber = false;
+        try {
+            int number = Integer.parseInt(num);
+            return isNumber = true;
+        } catch (NumberFormatException e) {
+            return isNumber;
         }
-        return number / 10 + number % 10;
     }
 
-    // Return sum of odd-place digits in cardNumber
-    public static int sumOfOddPlace(long cardNumber) {
-        int sum = 0;
-        String num = cardNumber + "";
-        for (int i = getSize(cardNumber) - 1; i >= 0; i -= 2) {
-            sum += Integer.parseInt(num.charAt(i) + "");
+    public static boolean isVaildName(String Name) {
+        boolean isNumber = checkIsNumber(Name);
+        if (isNumber == true) {
+            return false;
         }
-        return sum;
-    }
-
-    // Return true if the prefix parameter is the correct prefix for that card cardNumber
-    public static boolean prefixMatched(long cardNumber, int prefix) {
-        return getPrefix(cardNumber, getSize(prefix)) == prefix;
+        boolean isCorrect = Name.matches("[a-zA-Z]+") && !isNumber ? true : false;
+        return isCorrect;
     }
 
     // Return the number of digits in a card number
     public static int getSize(long cardNumber) {
         String num = cardNumber + "";
         return num.length();
-    }
-
-    //Return prefix of cardNumber with the required size
-    // If the cardNumber size is less than
-    //sizeOfThePrefix, return cardNumber.
-    public static long getPrefix(long cardNumber, int sizeOfThePrefix) {
-        if (getSize(cardNumber) > sizeOfThePrefix) {
-            String num = cardNumber + "";
-            return Long.parseLong(num.substring(0, sizeOfThePrefix));
-        }
-        return cardNumber;
-    }
-
-    static boolean isValidCVVNumber(int CVV) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

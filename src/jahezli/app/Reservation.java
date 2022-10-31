@@ -1,19 +1,42 @@
 package jahezli.app;
+
 /**
  *
  * @author renad
  */
 public class Reservation {
 
-    String date;
-    String time;
-    String tableNo;
-    String placeName;
+    private String date;
+    private String time;
+   private String tableNo;
+   private String placeName;
+    private String ResvervationNum;
+    private double price;
 
     public Reservation() {
 
     }
+    // this constructor for payment
+     public Reservation(String ResvervationNum, double cost) {
+        this.ResvervationNum = ResvervationNum;
+        this.price = cost;
+    }
 
+     public void setResvervationNum(String reserve) {
+         ResvervationNum = reserve;   
+    }
+
+    public void setPrice(double price) {
+         this.price = price;
+    }
+    public String getResvervationNum() {
+        return ResvervationNum;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+/////////////////////////////////////////
     public void setReservationDate(String date) {
         this.date = date;
     }
@@ -46,4 +69,3 @@ public class Reservation {
         return placeName;
     }
 }
-

@@ -115,26 +115,23 @@ public class Manager implements User, Login {
     @Override
     public void Access(String phoneNo, String password) {
         Scanner input = new Scanner(System.in);
-        System.out.println("---------------------------------------------------");
-        System.out.println("                   Manager menu                    ");
-        System.out.println("---------------------------------------------------");
-        System.out.println("Enter 1 to display all reservation");
-        System.out.println("Enter 2 to log out");
         int managerChoice = input.nextInt();
-
-        switch (managerChoice) {
-
+           switch (managerChoice) {
             case 1:
                 System.out.println("---------------------------------------------------");
                 System.out.println("                Display all reservation            ");
                 System.out.println("---------------------------------------------------");
-                displayAllReservations();
+                System.out.println("No reservation done");
                 System.out.println("---------------------------------------------------");
                 System.out.println("");
                 break;
 
             case 2:
-                return;
+                System.out.println("---------------------------------------------------");
+                System.out.println("*** Thank you for Visiting Jahezli app ***");
+                System.out.println("---------------------------------------------------");
+                System.exit(0);
+                break;
 
             default:
                 System.out.println();
@@ -142,17 +139,15 @@ public class Manager implements User, Login {
                 System.out.println("---------------------------------------------------");
                 System.out.println("");
 
-        }
-
+        }   
     }
 
-    public void displayAllReservations() {
-        for (int i = 0; i < reservationArray.size(); i++) {
-            Reservation reserve = reservationArray.get(i);
-            System.out.println(reserve);
-
-        }
-
-    }
+//    public void displayAllReservations() {
+//        for (int i = 0; i < reservationArray.size(); i++) {
+//            Reservation reserve = reservationArray.get(i);
+//            System.out.println(reserve);
+//        }
+//
+//    }
 
 }

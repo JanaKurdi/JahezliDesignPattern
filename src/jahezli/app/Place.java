@@ -50,6 +50,9 @@ public class Place {
 
     public ArrayList<Table> getPlace() {
 
+        
+        
+       
         ArrayList<Table> Tables = new ArrayList();
         Tables.add(new Table(7, "Piatto", 4));
         Tables.add(new Table(10, "San Carlo", 4));

@@ -14,6 +14,10 @@ public interface ReservationBuilder {
 
     public void buildReservationTable();
 
+    public String buildReservationNumber();
+  
+public double buildReservationPrice();
+
     public Reservation getReservation();
 
 }

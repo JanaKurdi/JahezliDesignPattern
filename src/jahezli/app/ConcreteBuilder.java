@@ -121,4 +121,18 @@ public class ConcreteBuilder implements ReservationBuilder {
             return false;
         }
     }
+
+    @Override
+    public String buildReservationNumber() {
+        String Rev1 = "1200";
+        reservation.setResvervationNum(Rev1);
+       return Rev1;
+    }
+
+    @Override
+    public double buildReservationPrice() {
+        double price = 20;
+        reservation.setPrice(price);
+        return price;
+    }
 }

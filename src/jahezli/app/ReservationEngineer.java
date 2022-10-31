@@ -10,6 +10,7 @@ public class ReservationEngineer {
     public ReservationEngineer(ReservationBuilder reservationmaker) {
         this.reservationmaker = reservationmaker;
     }
+    
 
     public Reservation getReservation() {
         return this.reservationmaker.getReservation();
@@ -20,6 +21,8 @@ public class ReservationEngineer {
         this.reservationmaker.buildReservationTime();
         this.reservationmaker.buildReservationPlace();
         this.reservationmaker.buildReservationTable();
+        this.reservationmaker.buildReservationNumber();
+        this.reservationmaker.buildReservationPrice();
     }
 
 }
