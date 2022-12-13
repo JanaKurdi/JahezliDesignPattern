@@ -39,7 +39,7 @@ public class Checker {
                         + " please enter a vaild password:");
                 pass = input.next();
                 isValidPassword = isValidPassword(pass);
-            } while (isValidPassword == false);
+            } while (isValidPassword == true);
         }
         return pass;
     }

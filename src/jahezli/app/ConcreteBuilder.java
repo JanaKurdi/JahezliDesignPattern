@@ -124,9 +124,10 @@ public class ConcreteBuilder implements ReservationBuilder {
 
     @Override
     public String buildReservationNumber() {
-        String Rev1 = "1200";
+        int b = (int)(Math.random()*(200-1+1)+1);  
+        String Rev1 = String.valueOf(b);
         reservation.setResvervationNum(Rev1);
-       return Rev1;
+        return Rev1;
     }
 
     @Override
@@ -134,5 +135,20 @@ public class ConcreteBuilder implements ReservationBuilder {
         double price = 20;
         reservation.setPrice(price);
         return price;
+    }
+
+    @Override
+    public void buildReservationCustomerNumber() {
+        System.out.println("Enter your Phone:");
+        String phone = input.next();
+        do {
+            if (IsValidInput(phone)) {
+                break;
+            } else {
+                System.out.println("invalid input, phone must be number please try again :");
+                phone = input.next();
+            }
+        } while (true);
+        reservation.setCustomerNumber(phone);
     }
 }

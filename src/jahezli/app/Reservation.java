@@ -8,27 +8,27 @@ public class Reservation {
 
     private String date;
     private String time;
-   private String tableNo;
-   private String placeName;
+    private String tableNo;
+    private String placeName;
     private String ResvervationNum;
     private double price;
-
+    private String CustomerNumber; // new parameter for manager
     public Reservation() {
 
     }
     // this constructor for payment
-     public Reservation(String ResvervationNum, double cost) {
+    public Reservation(String ResvervationNum, double cost) {
         this.ResvervationNum = ResvervationNum;
         this.price = cost;
     }
-
-     public void setResvervationNum(String reserve) {
-         ResvervationNum = reserve;   
+    public void setResvervationNum(String reserve) {
+        ResvervationNum = reserve;
     }
 
     public void setPrice(double price) {
-         this.price = price;
+        this.price = price;
     }
+
     public String getResvervationNum() {
         return ResvervationNum;
     }
@@ -37,6 +37,7 @@ public class Reservation {
         return price;
     }
 /////////////////////////////////////////
+
     public void setReservationDate(String date) {
         this.date = date;
     }
@@ -49,6 +50,13 @@ public class Reservation {
         this.tableNo = tableN;
     }
 
+    public void setCustomerNumber(String customerNumber) {
+        this.CustomerNumber = customerNumber;
+    }
+
+    public String getCustomerNumber() {
+        return CustomerNumber;
+    }
     public void setReservationPlace(String placename) {
         this.placeName = placename;
     }

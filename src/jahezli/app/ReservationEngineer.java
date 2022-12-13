@@ -23,6 +23,7 @@ public class ReservationEngineer {
         this.reservationmaker.buildReservationTable();
         this.reservationmaker.buildReservationNumber();
         this.reservationmaker.buildReservationPrice();
+        this.reservationmaker.buildReservationCustomerNumber();
     }
 
 }

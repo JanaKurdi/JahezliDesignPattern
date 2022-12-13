@@ -1,5 +1,5 @@
-
 package jahezli.app;
+
 /**
  *
  * @author renad
@@ -17,6 +17,8 @@ public interface ReservationBuilder {
     public String buildReservationNumber();
 
     public double buildReservationPrice();
+
+    public void buildReservationCustomerNumber();
 
     public Reservation getReservation();
 

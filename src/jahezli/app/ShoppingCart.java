@@ -4,7 +4,6 @@ package jahezli.app;
  *
  * @author Razan Alshaikh
  */
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -89,7 +88,7 @@ public class ShoppingCart {
                         System.out.println("Invalid expiration date ,please enter a valid expiration date again :");
                         cardExpirationDate = input.next();
                     }
-                    System.out.print("CVV (It should be 3 0r 4 digits): ");
+                    System.out.print("CVV (It should be 3 or 4 digits): ");
                     CVV = input.next();
                     while (!Checker.isValidCVVNumber(CVV)) {
                         System.out.println("Invalid CVV ,please enter a valid CVV again :");
@@ -105,6 +104,5 @@ public class ShoppingCart {
             }
             break;
         }
-
     }
 }

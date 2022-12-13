@@ -3,7 +3,7 @@ package jahezli.app;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Manager implements User, Login {
+public class Manager implements User, Profile {
 
     private static Manager manager = null;
     private static String phoneNo;
@@ -16,7 +16,6 @@ public class Manager implements User, Login {
     public static String price = null;
 
     private Manager() {
-
     }
 
     private Manager(String phoneNum, String password) {
@@ -73,8 +72,27 @@ public class Manager implements User, Login {
         return reservationArray;
     }
 
-    public static void setReservationArray(ArrayList<Reservation> reservationArray) {
-        Manager.reservationArray = reservationArray;
+    public static void setReservationArray(ArrayList<Reservation> Resrvation) {
+        Manager.reservationArray = Resrvation;
+    }
+
+    public void addReservation(Reservation Reservation, int i) {
+        reservationArray.add(i, Reservation);
+    }
+
+    public void DisplayAllResrvation() {
+        for (int i = 0; i < reservationArray.size(); i++) {
+            System.out.println("---------------------------------------------------");
+            System.out.println("        Display ALL RESERVATION INFORMATION                 ");
+            System.out.println("---------------------------------------------------");
+            System.out.println("Reservation Number : " + reservationArray.get(i).getResvervationNum());
+            System.out.println("Date is:" + reservationArray.get(i).getReservationDate());
+            System.out.println("Time is:" + reservationArray.get(i).getReservationTime());
+            System.out.println("Place name is:" + reservationArray.get(i).getReservationPlace());
+            System.out.println("Table number is:" + reservationArray.get(i).getReservationTable());
+            System.out.println("Price is: " + reservationArray.get(i).getPrice());
+            System.out.println("Customer Number is: " + reservationArray.get(i).getCustomerNumber());
+        }
     }
 
     public static String getReservationTime() {
@@ -109,19 +127,22 @@ public class Manager implements User, Login {
             }
         }
         return null;
-
     }
 
-    @Override
-    public void Access(String phoneNo, String password) {
+    public void Access() {
         Scanner input = new Scanner(System.in);
         int managerChoice = input.nextInt();
-           switch (managerChoice) {
+        switch (managerChoice) {
             case 1:
                 System.out.println("---------------------------------------------------");
                 System.out.println("                Display all reservation            ");
                 System.out.println("---------------------------------------------------");
-                System.out.println("No reservation done");
+                if (reservationArray.size() == 0) {
+                    System.out.println("No resrvation done yet");
+                } else {
+                    DisplayAllResrvation();
+
+                }
                 System.out.println("---------------------------------------------------");
                 System.out.println("");
                 break;
@@ -139,7 +160,31 @@ public class Manager implements User, Login {
                 System.out.println("---------------------------------------------------");
                 System.out.println("");
 
-        }   
+        }
+    }
+
+    @Override
+    public void Username() {
+    }
+
+    @Override
+    public void Password() {
+    }
+
+    @Override
+    public void PhoneNo() {
+    }
+
+    @Override
+    public void Email() {
+    }
+
+    @Override
+    public void City(Scanner input) {
+    }
+
+    @Override
+    public void name() {
     }
 
 }

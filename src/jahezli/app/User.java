@@ -21,7 +21,5 @@ public interface User {
     
     public void addUser(User user);
 
-    
-    
 
 }

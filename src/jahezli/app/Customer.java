@@ -1,10 +1,10 @@
 package jahezli.app;
 
-import static jahezli.app.JahezliApp.Menus;
+
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class Customer implements User , Login {
+public class Customer implements User , Profile {
 
     Scanner input = new Scanner(System.in);
     String phone;
@@ -14,19 +14,17 @@ public class Customer implements User , Login {
     Reservation reserve;
 
 
-    public Customer(){
-        
+    public Customer(){  
     }
 
     public Customer(String phone, String city, String password, double totalPrice) throws FileNotFoundException {
-    
     }
 
     public Customer(String name, String phone, String city, String password) throws FileNotFoundException {
         this.name = name;
-//        super.setPassword(password);
-//        super.setUserName(phone);
+        this.phone = phone;
         this.city = city;
+        this.password = password;
     }
 
     public String getPhone() {
@@ -52,7 +50,7 @@ public class Customer implements User , Login {
     public void setName(String name) {
         this.name = name;
     }
-// here must be link with Reservation Idea
+
     public Reservation getReserve() {
         return reserve;
     }
@@ -79,22 +77,39 @@ public class Customer implements User , Login {
 
     @Override
     public void setPhoneNo(String phoneNo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void setPassword(String password) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void addUser(User user) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void Access(String phoneNo, String password) {
-        System.out.println("Welcome to Jahezli App !! ");
+    public void Username() {
+    }
+
+    @Override
+    public void Password() {
+    }
+
+    @Override
+    public void PhoneNo() {
+
+    }
+
+    @Override
+    public void Email() {
+    }
+
+    @Override
+    public void City(Scanner input) {
+    }
+
+    @Override
+    public void name() {
     }
 
 }

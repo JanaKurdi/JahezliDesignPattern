@@ -1,35 +1,16 @@
 package jahezli.app;
 
-public class Table {
-    int tableNo;
-    String placeName;
-    int chair;
+/**
+ *
+ * @author ghaidaa
+ */
+public interface Table {
     
-   public Table(){
+    public void Table(int tableNo, String placeName,int chair);
+    public int getTableNo();
+    public void setTableNo(int tableNo);
+    public int getChair();
+    public int setChair();
+    public String TableType();
     
-} 
-       public Table(int tableNo, String placeName,int chair) {
-        
-        this.tableNo = tableNo;
-        this.placeName = placeName;
-        this.chair = chair;
-        
-    }
-
-    public int getTableNo() {
-        return tableNo;
-    }
-
-    public void setTableNo(int tableNo) {
-        this.tableNo = tableNo;
-    }
-
-    public int getChair() {
-        return chair;
-    }
-
-    public void setChair(int chair) {
-        this.chair = chair;
-    }
-
 }
